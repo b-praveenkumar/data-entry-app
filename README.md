@@ -18,8 +18,8 @@ This project is a simple data entry application that allows users to store and f
 ## Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/data-entry-application.git
-   cd data-entry-application
+   git clone https://github.com/your-username/data-entry-app.git
+   cd data-entry-app
    ```
 
 2. Install dependencies:
