@@ -1,5 +1,3 @@
-Certainly! Here's a simple template for your project's README:
-
 # Data Entry Application
 
 ## Overview
