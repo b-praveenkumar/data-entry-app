@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const port = 3001;
+const port = process.env.PORT || 3001;
+
+
 const uri = "mongodb+srv://bpraveenkumar133:CEESuc@data.xanfrwl.mongodb.net/?retryWrites=true&w=majority";
 app.use(cors());
 app.use(express.json());
