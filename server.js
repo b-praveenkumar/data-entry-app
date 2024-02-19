@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // Import path module
 const app = express();
 const port = process.env.PORT || 3001;
 const uri = process.env.MONGODB_URI;
@@ -13,7 +12,7 @@ app.use(express.json());
 // MongoDB connection
 if (!uri) {
   console.error('MONGODB_URI environment variable is not defined.');
-  process.exit(1);
+  process.exit(1); // Exit the process if MongoDB URI is missing
 }
 
 mongoose.connect(uri, {
@@ -23,19 +22,16 @@ mongoose.connect(uri, {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('MongoDB connection error:', err);
-  process.exit(1);
+  process.exit(1); // Exit the process if MongoDB connection fails
 });
 
 // Routes
 const entriesRouter = require('./routes/entries');
 app.use('/api/entries', entriesRouter);
 
-// Serve the static files for the frontend
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-// Handle requests to all other routes by serving the frontend index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// Root endpoint
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
 });
 
 // Error handling middleware
